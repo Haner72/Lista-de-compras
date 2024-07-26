@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <script>
+        let tamanhoDaLista = 0
+
+        function addItem(){
+            const nomeItem = document.getElementById("item")
+            const itemNome = nomeItem.value
+
+            nomeItem.value = ''
+
+            const lista = document.getElementById("lista")
+
+            lista.innerHTML += `
+            <div class="item">
+            <li>
+
+                <input type="checkbox" name="item-${tamanhoDaLista}" id="item-${tamanhoDaLista}">
+                ${itemNome}
+
+                </li>
+
+                <button class="botao" onclick="removerItem(item-${tamanhoDaLista})">X</button>
+
+                </div>
+                <br>
+                `
+                tamanhoDaLista++
+            
+        }
+        function removerItem(id) {
+            const deletado = document.getElementById(`item-${id}`)
+            deletado.remove();
+        }
+    </script>
+    <style>
+
+body {
+
+    background-color: rgb(250, 250, 119);
+    
+    margin-top: 250px;
+    margin-bottom: 250px;
+    margin-left: 300px;
+    margin-right: 300px;
+
+}
+ .h2 {
+    text-align: center;
+ }
+ .item {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+ }
+ .botao{
+color: rgb(88, 69, 156);
+ }
+
+    </style>
+    </head>
+    <body>
+        <h2>Lista de Compras</h2>
+
+        <ul id="lista">
+
+        </ul>
+            <input type="text" id="item">
+            <button onclick="addItem()">Adicionar item à lista</button>
+ 
+    </body>
+</html>
